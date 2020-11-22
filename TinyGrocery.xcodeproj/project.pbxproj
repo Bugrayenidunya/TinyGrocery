@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		136A03F2256AC487004F6D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03F1256AC487004F6D94 /* AppDelegate.swift */; };
 		136A03F4256AC487004F6D94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03F3256AC487004F6D94 /* SceneDelegate.swift */; };
-		136A03F6256AC487004F6D94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03F5256AC487004F6D94 /* ViewController.swift */; };
 		136A03F9256AC487004F6D94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136A03F7256AC487004F6D94 /* Main.storyboard */; };
 		136A03FB256AC48A004F6D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 136A03FA256AC48A004F6D94 /* Assets.xcassets */; };
 		136A03FE256AC48A004F6D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136A03FC256AC48A004F6D94 /* LaunchScreen.storyboard */; };
+		136A0415256AC652004F6D94 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A0414256AC652004F6D94 /* HomeController.swift */; };
+		136A0418256AC660004F6D94 /* ShoppingBasketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A0417256AC660004F6D94 /* ShoppingBasketController.swift */; };
+		136A041C256AC6AB004F6D94 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A041B256AC6AB004F6D94 /* Service.swift */; };
+		136A041F256AC6B4004F6D94 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A041E256AC6B4004F6D94 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		136A03EE256AC487004F6D94 /* TinyGrocery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyGrocery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136A03F1256AC487004F6D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		136A03F3256AC487004F6D94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		136A03F5256AC487004F6D94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		136A03F8256AC487004F6D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		136A03FA256AC48A004F6D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		136A03FD256AC48A004F6D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		136A03FF256AC48A004F6D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		136A0414256AC652004F6D94 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		136A0417256AC660004F6D94 /* ShoppingBasketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBasketController.swift; sourceTree = "<group>"; };
+		136A041B256AC6AB004F6D94 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		136A041E256AC6B4004F6D94 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,106 @@
 		136A03F0256AC487004F6D94 /* TinyGrocery */ = {
 			isa = PBXGroup;
 			children = (
-				136A03F1256AC487004F6D94 /* AppDelegate.swift */,
-				136A03F3256AC487004F6D94 /* SceneDelegate.swift */,
-				136A03F5256AC487004F6D94 /* ViewController.swift */,
-				136A03F7256AC487004F6D94 /* Main.storyboard */,
-				136A03FA256AC48A004F6D94 /* Assets.xcassets */,
-				136A03FC256AC48A004F6D94 /* LaunchScreen.storyboard */,
-				136A03FF256AC48A004F6D94 /* Info.plist */,
+				136A040B256AC57E004F6D94 /* Networking */,
+				136A0407256AC53C004F6D94 /* Resources */,
+				136A0408256AC544004F6D94 /* Supports */,
+				136A0406256AC530004F6D94 /* UI */,
+				136A0409256AC54B004F6D94 /* Utilities */,
 			);
 			path = TinyGrocery;
+			sourceTree = "<group>";
+		};
+		136A0406256AC530004F6D94 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				136A040F256AC59D004F6D94 /* Home */,
+				136A0410256AC5A1004F6D94 /* ShoppingBasket */,
+				136A040E256AC595004F6D94 /* Storyboards */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		136A0407256AC53C004F6D94 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				136A03FA256AC48A004F6D94 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		136A0408256AC544004F6D94 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				136A03FF256AC48A004F6D94 /* Info.plist */,
+				136A03F1256AC487004F6D94 /* AppDelegate.swift */,
+				136A03F3256AC487004F6D94 /* SceneDelegate.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		136A0409256AC54B004F6D94 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				136A040A256AC553004F6D94 /* Constants */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		136A040A256AC553004F6D94 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		136A040B256AC57E004F6D94 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				136A040C256AC585004F6D94 /* Endpoint */,
+				136A040D256AC58B004F6D94 /* Service */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		136A040C256AC585004F6D94 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				136A041E256AC6B4004F6D94 /* Endpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		136A040D256AC58B004F6D94 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				136A041B256AC6AB004F6D94 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		136A040E256AC595004F6D94 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				136A03F7256AC487004F6D94 /* Main.storyboard */,
+				136A03FC256AC48A004F6D94 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		136A040F256AC59D004F6D94 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				136A0414256AC652004F6D94 /* HomeController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		136A0410256AC5A1004F6D94 /* ShoppingBasket */ = {
+			isa = PBXGroup;
+			children = (
+				136A0417256AC660004F6D94 /* ShoppingBasketController.swift */,
+			);
+			path = ShoppingBasket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +234,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				136A03F6256AC487004F6D94 /* ViewController.swift in Sources */,
 				136A03F2256AC487004F6D94 /* AppDelegate.swift in Sources */,
 				136A03F4256AC487004F6D94 /* SceneDelegate.swift in Sources */,
+				136A041C256AC6AB004F6D94 /* Service.swift in Sources */,
+				136A0415256AC652004F6D94 /* HomeController.swift in Sources */,
+				136A041F256AC6B4004F6D94 /* Endpoint.swift in Sources */,
+				136A0418256AC660004F6D94 /* ShoppingBasketController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,14 +389,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMTY324S26;
 				INFOPLIST_FILE = TinyGrocery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bugrayenidunya.TinyGrocery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,14 +410,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMTY324S26;
 				INFOPLIST_FILE = TinyGrocery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bugrayenidunya.TinyGrocery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
