@@ -11,14 +11,14 @@ import Foundation
 
 enum Endpoint {
   /// Endpoint for getting all grocery items
-  case getItems
+  case getProducts
   /// Endpoint for checkout to shopping basket
   case checkout
   
   /// Schemes for each endpoint
   var scheme: String {
     switch self {
-      case .getItems, .checkout:
+      case .getProducts, .checkout:
         return "https"
     }
   }
@@ -26,7 +26,7 @@ enum Endpoint {
   /// Hosts for each endpoint
   var host: String {
     switch self {
-      case .getItems, .checkout:
+      case .getProducts, .checkout:
         return "desolate-shelf-18786.herokuapp.com"
     }
   }
@@ -34,7 +34,7 @@ enum Endpoint {
   /// Paths for each endpoint
   var path: String {
     switch self {
-      case .getItems:
+      case .getProducts:
         return "/list"
       case .checkout:
         return "/checkout"
@@ -44,7 +44,7 @@ enum Endpoint {
   /// Methods for each endpoint
   var method: String {
     switch self {
-      case .getItems:
+      case .getProducts:
         return "GET"
       case .checkout:
         return "POST"
