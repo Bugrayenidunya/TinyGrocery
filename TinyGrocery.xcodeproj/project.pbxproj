@@ -16,6 +16,7 @@
 		136A0418256AC660004F6D94 /* ShoppingBasketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A0417256AC660004F6D94 /* ShoppingBasketController.swift */; };
 		136A041C256AC6AB004F6D94 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A041B256AC6AB004F6D94 /* Service.swift */; };
 		136A041F256AC6B4004F6D94 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A041E256AC6B4004F6D94 /* Endpoint.swift */; };
+		13971174256BD0250044F677 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13971173256BD0250044F677 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		136A0417256AC660004F6D94 /* ShoppingBasketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBasketController.swift; sourceTree = "<group>"; };
 		136A041B256AC6AB004F6D94 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		136A041E256AC6B4004F6D94 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		13971173256BD0250044F677 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		136A03F0256AC487004F6D94 /* TinyGrocery */ = {
 			isa = PBXGroup;
 			children = (
+				13971172256BD01A0044F677 /* Models */,
 				136A040B256AC57E004F6D94 /* Networking */,
 				136A0407256AC53C004F6D94 /* Resources */,
 				136A0408256AC544004F6D94 /* Supports */,
@@ -164,6 +167,14 @@
 			path = ShoppingBasket;
 			sourceTree = "<group>";
 		};
+		13971172256BD01A0044F677 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13971173256BD0250044F677 /* Product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,6 +249,7 @@
 				136A03F4256AC487004F6D94 /* SceneDelegate.swift in Sources */,
 				136A041C256AC6AB004F6D94 /* Service.swift in Sources */,
 				136A0415256AC652004F6D94 /* HomeController.swift in Sources */,
+				13971174256BD0250044F677 /* Product.swift in Sources */,
 				136A041F256AC6B4004F6D94 /* Endpoint.swift in Sources */,
 				136A0418256AC660004F6D94 /* ShoppingBasketController.swift in Sources */,
 			);
@@ -388,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMTY324S26;
-				INFOPLIST_FILE = TinyGrocery/Info.plist;
+				INFOPLIST_FILE = TinyGrocery/Supports/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,7 +421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMTY324S26;
-				INFOPLIST_FILE = TinyGrocery/Info.plist;
+				INFOPLIST_FILE = TinyGrocery/Supports/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

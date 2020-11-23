@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,8 +19,26 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ssb-jO-wY8"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Ssb-jO-wY8">
+                        <barButtonItem key="rightBarButtonItem" image="cart.fill" catalog="system" style="done" id="czh-SB-RUo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mcs-Me-UgV">
+                                <rect key="frame" x="338" y="0.0" width="56" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="cart.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="basketButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="whw-4Y-K18"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="basketBarButton" destination="mcs-Me-UgV" id="1bT-H2-YIR"/>
                         <segue destination="xYE-mf-3fQ" kind="show" identifier="1" id="4cj-5g-52r"/>
                     </connections>
                 </viewController>
@@ -63,6 +82,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
