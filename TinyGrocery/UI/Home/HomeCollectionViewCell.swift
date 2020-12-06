@@ -22,6 +22,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var productPriceLabel: UILabel!
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var topStepperView: UIView!
+  @IBOutlet weak var stockLabel: UILabel!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -43,6 +44,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     button.setBackgroundImage(UIImage(systemName: "plus.app"), for: .normal)
     return button
   }()
+  
   // Minus button for removing product from shopping basket
   let stepperMinusButton: UIButton = {
     let button = UIButton(type: UIButton.ButtonType.system)
@@ -52,6 +54,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     button.setBackgroundImage(UIImage(systemName: "minus.square"), for: .normal)
     return button
   }()
+  
   /// Count label for product
   let stepperLabel: UILabel = {
     let label = UILabel()
