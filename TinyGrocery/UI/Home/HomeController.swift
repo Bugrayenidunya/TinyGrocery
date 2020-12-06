@@ -18,10 +18,6 @@ class HomeController: UIViewController {
   let badgeSize: CGFloat = 20
   /// All products from API call
   var products: [Product] = []
-  /// Shopping Basket
-  var shoppingBasket: [Product] = []
-  /// Store only uniqe value from basket, for show on the basket's badge
-  var uniqueProducts: Set<String> = []
   
   // MARK: Outlets
   
@@ -61,16 +57,16 @@ class HomeController: UIViewController {
     /// Create instance of CollectionViewFlowLayout
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
-    // set section inset
-    layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    // Set section inset
+    layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 40, right: 20)
     
-    // set Minimum spacing between cells
+    // Set Minimum spacing between cells
     layout.minimumInteritemSpacing = 8
     
-    // set minimum vertical line spacing between cells
+    // Set minimum vertical line spacing between cells
     layout.minimumLineSpacing = 8
     
-    // apply defined layout to collectionview
+    // Apply defined layout to collectionview
     collectionView.collectionViewLayout = layout
   }
   
@@ -83,7 +79,7 @@ class HomeController: UIViewController {
     badgeCount.textAlignment = .center
     badgeCount.layer.masksToBounds = true
     badgeCount.textColor = .black
-    badgeCount.font = badgeCount.font.withSize(12)
+    badgeCount.font = .systemFont(ofSize: 14, weight: .medium)
     badgeCount.backgroundColor = .white
     badgeCount.layer.borderWidth = 0.1
     badgeCount.layer.borderColor = UIColor.lightGray.cgColor
@@ -136,72 +132,85 @@ extension HomeController: UICollectionViewDataSource {
     let product = products[indexPath.row]
     /// Stock for check
     let stock = product.stock
-    /// For adding the shopping basket
-    var piece = 0
-    /// Count every object in shopping basket
-    var countOfEachProduct: [String:Int] = [:]
     
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.UI.homeCollectionViewCell, for: indexPath) as? HomeCollectionViewCell else  { return UICollectionViewCell() }
-    
-    // We set them to Hidden at first launch
-    cell.stepperMinusButton.isHidden = true
-    cell.stepperLabel.isHidden = true
     
     /// Storing Image Url for Kingfisher
     let imageUrl = URL(string: product.imageUrl)
     
     // Cell configurations
-    cell.stepperLabel.textColor = UIColor.systemGreen
+    cell.stepperLabel.textColor = UIColor.systemBlue
+    cell.stepperLabel.font = .systemFont(ofSize: 17, weight: .medium)
     cell.productImageView.kf.indicatorType = .activity
     cell.productImageView.kf.setImage(with: imageUrl, options: [.scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage])
     cell.productNameLabel.text = product.name
     cell.productPriceLabel.text = "\(product.currency)\(product.price)"
+    cell.stockLabel.text = String(stock)
     
     cell.layer.cornerRadius = 4
     cell.layer.borderWidth = 0.25
     cell.layer.borderColor = UIColor.systemGray.cgColor
     
     // Plus Button Callback function
-    cell.stepperPlusPressed = {
+    cell.stepperPlusPressed = { [self] in
+      // Set visible
       cell.stepperLabel.isHidden = false
       cell.stepperMinusButton.isHidden = false
+      /// Get count
+      let productCount = viewModel.countProductInBasket(with: product.id)
       // Check stock
-      if piece < stock {
-        piece += 1
-        cell.stepperLabel.text = String(piece)
+      if productCount < stock && productCount == 0 {
         // Add product to basket
-        self.shoppingBasket.append(product)
-        // Add each unique product to 'Set'
-        for item in self.shoppingBasket {
-          self.uniqueProducts.insert(item.id)
+        viewModel.shoppingBasket.append(product)
+        /// Get count
+        let productCount = viewModel.countProductInBasket(with: product.id)
+        // Update new count
+        cell.stepperLabel.text = String(productCount)
+        // Add each unique product insert to 'Set' type
+        for item in viewModel.shoppingBasket {
+          viewModel.uniqueProducts.insert(item.id)
         }
+      } else if productCount < stock && productCount > 0 {
+        // Add product to basket
+        viewModel.shoppingBasket.append(product)
+        /// Get count
+        let productCount = viewModel.countProductInBasket(with: product.id)
+        // Update new count
+        cell.stepperLabel.text = String(productCount)
+      } else {
+        // TODO: - Do This: Add Alert
       }
-      self.showBadge(withCount: self.uniqueProducts.count)
-    }
+      self.showBadge(withCount: viewModel.uniqueProducts.count)
+    } //: Plus Button
     
     // Minus Button Callback function
-    cell.stepperMinusPressed = {
-      // Collect each product's id and count frequency for the badge count
-      countOfEachProduct = self.shoppingBasket.reduce(into: [:]) { $0[$1.id, default: 0] += 1 }
+    cell.stepperMinusPressed = { [self] in
+      /// Get count
+      let productCount = viewModel.countProductInBasket(with: product.id)
       // Check stock
-      if piece <= stock && piece > 0 {
-        piece -= 1
-        cell.stepperLabel.text = String(piece)
+      if productCount <= stock {
         // Get index of selected product inside basket and remove
-        if let index = self.shoppingBasket.firstIndex(where: { $0.id == product.id }) {
-          self.shoppingBasket.remove(at: index)
+        if let index = viewModel.shoppingBasket.firstIndex(where: { $0.id == product.id }) {
+          viewModel.shoppingBasket.remove(at: index)
         }
-        if piece == 0 {
+        /// Get count
+        let productCount = viewModel.countProductInBasket(with: product.id)
+        // Update new count
+        cell.stepperLabel.text = String(productCount)
+        // Check unique procudt's count and remove
+        if productCount == 0 {
+          viewModel.uniqueProducts.remove(product.id)
           cell.stepperLabel.isHidden = true
           cell.stepperMinusButton.isHidden = true
         }
-        // Check unique procudt's count and remove
-        if countOfEachProduct[product.id] == 1 {
-          self.uniqueProducts.remove(product.id)
-        }
-        self.showBadge(withCount: self.uniqueProducts.count)
+        // Update Badge
+        self.showBadge(withCount: viewModel.uniqueProducts.count)
+        
+      } else {
+        cell.stepperLabel.isHidden = false
+        cell.stepperLabel.isHidden = false
       }
-    }
+    } //: Minus Button
     
     return cell
   }
@@ -223,7 +232,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     /// Width of per cell
     let cellWidth = (collectionView.bounds.width - totalSpace) / numberOfCellsPerRow
     
-    return CGSize(width: cellWidth, height: cellWidth * 1.75 )
+    return CGSize(width: cellWidth, height: cellWidth * 2.5 )
   }
   
 }
